@@ -18,7 +18,7 @@ jobs:
     steps:
 
       - name: Run Terraform
-        run: .scripts/terraform-setup.sh
+        run: ./scripts/terraform-setup.sh
       - uses: actions/checkout@v3
       - name: Set script permissions
         run: chmod +x ./scripts/*.sh
