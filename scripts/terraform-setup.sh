@@ -50,7 +50,7 @@ KUBE_CONFIG=$(terraform output -raw kube_config)
 # Write the Kubernetes config to ~/.kube/config for kubectl
 echo "Writing Kubernetes config to ~/.kube/config..."
 mkdir -p ~/.kube
-echo "$KUBE_CONFIG" > ~/.kube/config
+#echo "$KUBE_CONFIG" > ~/.kube/config
 
 # Set KUBECONFIG environment variable
 export KUBECONFIG=~/.kube/config
