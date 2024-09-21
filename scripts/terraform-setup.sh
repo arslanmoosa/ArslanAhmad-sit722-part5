@@ -33,7 +33,7 @@ fi
 # Step 3: Initialize Terraform
 
 # Navigate to the Terraform directory containing your .tf files
-cd terraform
+cd ./terraform
 
 # Initialize Terraform (only needed once)
 echo "Initializing Terraform..."
