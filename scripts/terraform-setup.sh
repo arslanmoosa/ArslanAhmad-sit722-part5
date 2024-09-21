@@ -9,16 +9,31 @@ set -e
 echo "Logging in to Azure..."
 az login
 
+# Set the subscription ID
 
 # Step 2: Install Terraform (if not installed)
-echo "Installing Terraform..."
-sudo apt-get update && sudo apt-get install -y software-properties-common
-sudo apt-get install -y terraform
+if ! command -v terraform &> /dev/null; then
+    echo "Terraform not found. Installing Terraform..."
+    
+    # Add the HashiCorp GPG key
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+    # Add the HashiCorp repository
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+    # Update package list
+    sudo apt-get update
+
+    # Install Terraform
+    sudo apt-get install -y terraform
+else
+    echo "Terraform is already installed."
+fi
 
 # Step 3: Initialize Terraform
 
 # Navigate to the Terraform directory containing your .tf files
-cd ./terraform
+cd terraform
 
 # Initialize Terraform (only needed once)
 echo "Initializing Terraform..."
