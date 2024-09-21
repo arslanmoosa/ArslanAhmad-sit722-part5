@@ -1,0 +1,36 @@
+name: Deploy microservice
+on:
+  push: 
+    branches:
+      - master
+  workflow_dispatch: 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    env:
+      VERSION: ${{ github.sha }}
+      CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
+      REGISTRY_UN: ${{ secrets.REGISTRY_UN }}
+      REGISTRY_PW: ${{ secrets.REGISTRY_PW  }}
+
+    steps:
+
+      - name: Run Terraform
+        run: ./terraform-setup.sh
+      - uses: actions/checkout@v3
+      - name: Set script permissions
+        run: chmod +x ./scripts/*.sh
+      - name: Build
+        run: ./scripts/build-image.sh
+      - name: Publish
+        run: ./scripts/push-image.sh
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+            version: v1.24.2
+      - name: Deploy
+        run: ./scripts/deploy.sh
+      - name: Delete
+        run: ./scripts/delete.sh  
