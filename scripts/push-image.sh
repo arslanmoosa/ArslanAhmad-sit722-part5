@@ -5,7 +5,7 @@ set -u # or set -o nounset
 : "$REGISTRY_UN"
 : "$REGISTRY_PW"
 
-docker login ampart5.azurecr.io -u ampart5 -p JeLcwwrbB/TQFuqivqZgeKb174S1g78aijFVVphfnI+ACRBnZJQD
+docker login ampart5.azurecr.io -u ampart5 -p sFkKyoSsryj8h+r8GmWulfouQb78IZeHvn+qywFeu8+ACRBc7eNY
 docker images
 docker tag book-catalog-service ampart5.azurecr.io/book-catalog-service
 

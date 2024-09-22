@@ -1,6 +1,6 @@
 # Your Solution
 
-sleep 120
+sleep 300
 kubectl delete -f scripts/kubernetes/deployment.yaml
 az logout
 
