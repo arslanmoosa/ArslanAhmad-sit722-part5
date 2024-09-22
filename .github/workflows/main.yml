@@ -20,11 +20,7 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Set script permissions
-        run: chmod +x ./scripts/*.sh
-      - name: Install Kubectl
-        uses: azure/setup-kubectl@v1
-      - name: Run Terraform
-        run: ./scripts/terraform-setup.sh        
+        run: chmod +x ./scripts/*.sh     
       - name: Build
         run: ./scripts/build-image.sh
       - name: Publish

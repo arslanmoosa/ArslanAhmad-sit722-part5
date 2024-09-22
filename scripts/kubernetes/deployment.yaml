@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: book-catalog
-        image: ampart4.azurecr.io/book-catalog-service:latest
+        image: ampart5.azurecr.io/book-catalog-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8088
@@ -23,7 +23,7 @@ spec:
         - name: PORT
           value: "8088"
         - name: DATABASE_URL
-          value: "postgresql://arslan_moosa_db_7_2_part4_user:W6kze7sSHnLOe4lyZgw0z2VAPJG1rynd@dpg-crmtmr56l47c73fu9i6g-a.oregon-postgres.render.com/arslan_moosa_db_7_2_part4"
+          value: "postgresql://arslan_moosa_db_7_2_part5_user:kt1elXjAhkVGHlfQkxELlT8EcXJAGmXJ@dpg-crnulv08fa8c738l3fug-a.oregon-postgres.render.com/arslan_moosa_db_7_2_part5"
 ---
 apiVersion: v1
 kind: Service
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: inventory-management
-        image: ampart4.azurecr.io/inventory-management-service:latest
+        image: ampart5.azurecr.io/inventory-management-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8089
@@ -62,7 +62,7 @@ spec:
         - name: PORT
           value: "8089"
         - name: DATABASE_URL
-          value: "postgresql://arslan_moosa_db_7_2_part4_user:W6kze7sSHnLOe4lyZgw0z2VAPJG1rynd@dpg-crmtmr56l47c73fu9i6g-a.oregon-postgres.render.com/arslan_moosa_db_7_2_part4"
+          value: "postgresql://arslan_moosa_db_7_2_part5_user:kt1elXjAhkVGHlfQkxELlT8EcXJAGmXJ@dpg-crnulv08fa8c738l3fug-a.oregon-postgres.render.com/arslan_moosa_db_7_2_part5"
 ---
 apiVersion: v1
 kind: Service

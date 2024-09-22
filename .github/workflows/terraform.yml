@@ -1,0 +1,23 @@
+name: terraform
+on:
+  push: 
+    branches:
+      - master
+  workflow_dispatch: 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    env:
+      VERSION: ${{ github.sha }}
+      CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
+      REGISTRY_UN: ${{ secrets.REGISTRY_UN }}
+      REGISTRY_PW: ${{ secrets.REGISTRY_PW  }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set script permissions
+        run: chmod +x ./scripts/*.sh
+      - name: Run Terraform
+        run: ./scripts/terraform-setup.sh

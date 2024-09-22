@@ -2,22 +2,21 @@ set -euo pipefail
 
 
 az login
-az acr login -n ampart4
+az acr login -n ampart5
 echo "login successful"
-az aks get-credentials --resource-group deakinuni --name amkubpart4 --overwrite-existing
+az aks get-credentials --resource-group ampart5 --name ampart5 --overwrite-existing
 echo "Connected to azure kubernetes "
 docker images
 envsubst < ./scripts/kubernetes/deployment.yaml | kubectl apply -f -
 echo "applied"
 echo "---------------------------------"
 echo "repository table"
-az acr repository list --name ampart4 --output table
+az acr repository list --name ampart5 --output table
 kubectl config current-context
 echo "Delaying 20 seconds to get the deployments done"
 sleep 20
 
 kubectl get pods
-
 kubectl get services
 kubectl get deployments
 sleep 20
